@@ -14,7 +14,7 @@ function addProduct(id, name, price, quantity){
       quantity: quantity
      }
      inventory.push(product)
-    console.log(product)
+    console.log("", product)
 }
 addProduct(1, "Shirt", 23.0, 5)
 addProduct(2, "Dresses", 80.0, 15)
