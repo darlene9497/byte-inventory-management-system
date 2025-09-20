@@ -16,10 +16,12 @@ function addProduct(id, name, price, quantity){
      inventory.push(product)
     console.log("", product)
 }
-addProduct(1, "Shirt", 23.0, 5)
+addProduct(1, "Shirts", 23.0, 5)
 addProduct(2, "Dresses", 80.0, 15)
-addProduct(3, "Shorts", 99.0, 20)
- 
+addProduct(3, "Skorts", 28.90, 12)
+addProduct(4, "Leggings", 9.06, 43)
+addProduct(5, "T-Shirts", 75.0, 4)
+addProduct(6, "Bows", 9.60, 28)
  
 // Remove Product: A function to remove a product.
 function removeProduct(name) {
@@ -59,9 +61,40 @@ updateStock("Shirt",2 )
 updateStock("Tie",2 )
 console.log( inventory )
 
+
+
 // Generate Report: A function to show a summary of the inventory,
 //  including the total number of products, their value, and a list of low-stock items.
- 
+function generateReport() {
+    let totalValue = 0
+    let lowStockItems = []
+
+    for(let i = 0; i < inventory.length; i++) {
+        const products = inventory[i]
+
+        let productValue = products.quantity * products.price
+        
+        console.log(' ')
+        console.log(`Product: ${products.name}\n
+            ProductID: ${products.id},\n
+            ProductQty: ${products.quantity},\n
+            Price: ${products.price}\n
+            ProductValue: ${productValue.toFixed(2)}`)
+
+        totalValue += productValue
+
+        if (products.quantity < 15) {
+            lowStockItems.push(products.name)
+        }
+    }
+    console.log(' ')
+    console.log(`Total inventory value: ${totalValue}`)
+    console.log(' ')
+    console.log(`Low stock items: ${lowStockItems}`)
+}
+
+generateReport()
+
 // Concept Application
 // Objects: Each product will be an object with properties like id, name, price, and quantity.
 // This is a better way to represent products than using separate variables for each property.
