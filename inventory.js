@@ -21,44 +21,21 @@ addProduct(2, "Dresses", 80.0, 15)
 addProduct(3, "Shorts", 99.0, 20)
  
  
+ 
+ 
+ 
+ 
 // Remove Product: A function to remove a product.
-function removeProduct(name) {
+ function removeProduct(name) {
     for (let index = 0; index < inventory.length; index++) {
-        if (inventory[index].name === name) {
-            console.log(inventory[index].name + ' has been removed');
-            inventory.splice(index, 1);
-            return;
-        }
+        if (inventory[index].name ==name) {
+            console.log(inventory[index].name + 'has been removed');
+            inventory.splice(name);
+        }            
     }
-  
 }
-
-
-console.log(inventory);
-removeProduct("Shorts");
-console.log(inventory);
-removeProduct("Dresses");
-console.log(inventory);
-
-
 
 // Update Stock: A function to increase or decrease the stock of an existing product.
-function updateStock(name, updatedQuantity){
-    for(let index = 0; index < inventory.length; index++)
-    {
-        if (inventory[index].name === name) {
-            inventory[index].quantity += updatedQuantity
-            console.log(name +"Stock has been updated to: ", updatedQuantity)
-            return
-        }
-        
-    }
-    console.log("The product does not exists")
-}
-updateStock("Shirt",2 )
-updateStock("Tie",2 )
-console.log( inventory )
-
 // Generate Report: A function to show a summary of the inventory,
 //  including the total number of products, their value, and a list of low-stock items.
  
@@ -77,4 +54,5 @@ console.log( inventory )
 // Boolean: The lowStock status could be a boolean property for each product object, making it
 // easier to filter them in your report.
 // Scope: The inventory array should be in the global scope so all your functions can access and modify it. Variables used inside the functions will have a local scope, preventing them from clashing with other variables.
- 
+
+
