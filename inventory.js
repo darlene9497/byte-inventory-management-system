@@ -25,6 +25,10 @@ addProduct(3, "Shorts", 99.0, 20)
  
  
  
+ 
+ 
+ 
+ 
 // Remove Product: A function to remove a product.
  function removeProduct(name) {
     for (let index = 0; index < inventory.length; index++) {
@@ -36,6 +40,23 @@ addProduct(3, "Shorts", 99.0, 20)
 }
 
 // Update Stock: A function to increase or decrease the stock of an existing product.
+
+
+function updateStock(name, updatedQuantity){
+    for(let index = 0; index < inventory.length; index++)
+    {
+        if (inventory[index].name === name) {
+            inventory[index].quantity += updatedQuantity
+            console.log(name +"Stock has been updated to: ", updatedQuantity)
+            return
+        }
+        
+    }
+    console.log("The product does not exists")
+}
+updateStock("Shirt",2 )
+updateStock("Tie",2 )
+console.log( inventory )
 // Generate Report: A function to show a summary of the inventory,
 //  including the total number of products, their value, and a list of low-stock items.
  
