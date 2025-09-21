@@ -67,7 +67,7 @@ console.log( inventory )
 //  including the total number of products, their value, and a list of low-stock items.
 function generateReport() {
     let totalValue = 0
-
+    let lowStockItems = []    // Array to hold low stock items
     for(let i = 0; i < inventory.length; i++) {
         const products = inventory[i]
 
@@ -84,7 +84,20 @@ function generateReport() {
     }
     console.log(' ')
     console.log(`Total inventory value: ${totalValue}`)
+
+
+
+
+    for (let i = 0; i < inventory.length; i++) {  // Loop through all products again
+        if (inventory[i].quantity < 5) {            // Boolean check
+            lowStockItems.push(inventory[i].name) // Add product name to lowStockItems array
+        }
+    }
+
+    console.log(' ')
+    console.log(`Low stock items: ${lowStockItems.join(", ")}`)//print low stock items nicely
 }
+   
 
 generateReport()
 
