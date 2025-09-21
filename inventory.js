@@ -5,7 +5,7 @@
 // Core Features
 // Add Product: A function to add a new product to the inventory.
 let inventory = []
- 
+
 function addProduct(id, name, price, quantity){
      const product = {
       id: id,
@@ -16,47 +16,73 @@ function addProduct(id, name, price, quantity){
      inventory.push(product)
     console.log("", product)
 }
-addProduct(1, "Shirt", 23.0, 5)
+
+addProduct(1, "Shirts", 23.0, 5)
 addProduct(2, "Dresses", 80.0, 15)
-addProduct(3, "Shorts", 99.0, 20)
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-// Remove Product: A function to remove a product.
- function removeProduct(name) {
+addProduct(3, "Skorts", 28.90, 12)
+addProduct(4, "Leggings", 9.06, 43)
+addProduct(5, "T-Shirts", 75.0, 4)
+addProduct(6, "Bows", 9.60, 28)
+
+// Remove Product
+function removeProduct(name) {
     for (let index = 0; index < inventory.length; index++) {
-        if (inventory[index].name ==name) {
-            console.log(inventory[index].name + 'has been removed');
-            inventory.splice(name);
+        if (inventory[index].name === name) {
+            console.log(inventory[index].name + ' has been removed');
+            inventory.splice(index, 1);
+            return;
         }            
     }
 }
 
-// Update Stock: A function to increase or decrease the stock of an existing product.
-
-
+// Update Stock
 function updateStock(name, updatedQuantity){
-    for(let index = 0; index < inventory.length; index++)
-    {
+    for(let index = 0; index < inventory.length; index++){
         if (inventory[index].name === name) {
             inventory[index].quantity += updatedQuantity
-            console.log(name +"Stock has been updated to: ", updatedQuantity)
+            console.log(name +" stock has been updated to: ", inventory[index].quantity)
             return
-        }
-        
+        }   
     }
-    console.log("The product does not exists")
+    console.log("The product does not exist")
 }
-updateStock("Shirt",2 )
-updateStock("Tie",2 )
-console.log( inventory )
+
+updateStock("Shirts",2)
+updateStock("Tie",2)
+console.log(inventory)
+
+// Generate Report
+function generateReport() {
+    let totalValue = 0
+    let lowStockItems = []    // Array to hold low stock items
+
+    for(let i = 0; i < inventory.length; i++) {
+        const products = inventory[i]
+        let productValue = products.quantity * products.price
+        
+        console.log(' ')
+        console.log(`Product: ${products.name}\n
+            ProductID: ${products.id},\n
+            ProductQty: ${products.quantity},\n
+            Price: ${products.price}\n
+            ProductValue: ${productValue.toFixed(2)}`)
+
+        totalValue += productValue
+
+        // ---  mark low stock items ---
+        if (products.quantity < 5) {  // Boolean check
+            lowStockItems.push(products.name)
+        }
+    }
+
+    console.log(' ')
+    console.log(`Total inventory value: ${totalValue}`)
+    console.log(' ')
+    console.log(`Low stock items: ${lowStockItems.join(", ")}`) // Print low stock items nicely
+}
+
+generateReport()
+
 // Generate Report: A function to show a summary of the inventory,
 //  including the total number of products, their value, and a list of low-stock items.
  
